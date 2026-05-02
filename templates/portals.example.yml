@@ -30,6 +30,7 @@ title_filter:
     # -- AI/ML roles --
     - "AI"
     - "ML"
+    - "Machine Learning"
     - "LLM"
     - "Agent"
     - "Agentic"
@@ -49,6 +50,12 @@ title_filter:
     - "Dozent"
     - "Weiterbildung"
     # -- Engineering roles --
+    - "Software Engineer"
+    - "Backend"
+    - "Full Stack"
+    - "Fullstack"
+    - "Cloud Engineer"
+    - "DevOps Engineer"
     - "Platform Engineer"
     - "Solutions Architect"
     - "Solutions Engineer"
@@ -59,6 +66,9 @@ title_filter:
     # -- Product roles --
     - "Product Manager"
     - "Technical PM"
+    # -- Leadership / Management --
+    - "Engineering Manager"
+    - "Head of"
     # -- Automation roles --
     - "Automation"
     - "Hyperautomation"
@@ -278,12 +288,81 @@ search_queries:
     query: 'site:news.ycombinator.com OR site:hnrss.org "AI Engineer" OR "Forward Deployed" OR "DevRel" OR "Founding Engineer" remote'
     enabled: true
 
+  # -- Japan Dev (English-friendly IT jobs in Japan) --
+  - name: Japan Dev — Software Engineering
+    query: 'site:japan-dev.com "software engineer" OR "backend" OR "fullstack" OR "frontend" OR "SRE" OR "DevOps" OR "platform engineer"'
+    enabled: true
+
+  - name: Japan Dev — AI/ML & Data
+    query: 'site:japan-dev.com "AI" OR "ML" OR "machine learning" OR "data engineer" OR "data scientist" OR "LLM"'
+    enabled: true
+
+  - name: Japan Dev — Leadership & Management
+    query: 'site:japan-dev.com "engineering manager" OR "tech lead" OR "CTO" OR "VPE" OR "head of engineering"'
+    enabled: true
+
+  # -- Findy (Japanese IT/engineering job board) --
+  - name: Findy — Software Engineering (JP)
+    query: 'site:findy-code.io "ソフトウェアエンジニア" OR "バックエンド" OR "フロントエンド" OR "SRE" OR "Python" OR "Go" OR "TypeScript"'
+    enabled: true
+
+  - name: Findy — AI/ML (JP)
+    query: 'site:findy-code.io "AI" OR "機械学習" OR "LLM" OR "データエンジニア" OR "ML"'
+    enabled: true
+
+  # -- SEEK NZ (largest NZ job board, SSR, 7,400+ software engineering jobs) --
+  - name: SEEK NZ — Software Engineering
+    query: 'site:seek.co.nz "software engineer" OR "backend" OR "fullstack" OR "DevOps" OR "SRE" OR "platform" New Zealand'
+    enabled: true
+
+  - name: SEEK NZ — AI/ML & Data
+    query: 'site:seek.co.nz "AI" OR "ML" OR "machine learning" OR "data engineer" OR "cloud" New Zealand'
+    enabled: true
+
+  # -- Indeed NZ --
+  - name: Indeed NZ — Software Engineering
+    query: 'site:nz.indeed.com "software engineer" OR "backend" OR "cloud engineer" OR "DevOps" New Zealand'
+    enabled: true
+
 # -- Tracked companies --
 # Companies whose career pages are checked directly.
 # scan_method: playwright (default), websearch, greenhouse_api
 # For Greenhouse companies, add api: field for faster structured JSON access.
 
 tracked_companies:
+
+  # -- Japanese IT job boards --
+
+  - name: Japan Dev
+    careers_url: https://japan-dev.com/jobs
+    scan_method: playwright
+    notes: "Curated English-friendly software engineering jobs in Japan. Visa sponsorship + remote policy + salary data. ~270 jobs, high signal."
+    enabled: true
+
+  # -- New Zealand employers --
+
+  - name: Rocket Lab
+    careers_url: https://job-boards.greenhouse.io/rocketlab
+    api: https://boards-api.greenhouse.io/v1/boards/rocketlab/jobs
+    notes: "NZ aerospace. 265 total jobs, ~35 in Auckland/Waikato. Greenhouse API (zero-token)."
+    enabled: true
+
+  - name: Pushpay
+    careers_url: https://job-boards.greenhouse.io/pushpay
+    api: https://boards-api.greenhouse.io/v1/boards/pushpay/jobs
+    notes: "NZ fintech (Auckland). 23 jobs, 8 in NZ. Greenhouse API (zero-token)."
+    enabled: true
+
+  - name: SafetyCulture
+    careers_url: https://jobs.lever.co/safetyculture-2
+    notes: "AU/NZ quality platform. 12+ jobs. Lever API (zero-token)."
+    enabled: true
+
+  - name: SEEK NZ
+    careers_url: https://www.seek.co.nz/software-engineering-jobs
+    scan_method: playwright
+    notes: "Largest NZ job board. 7,400+ software engineering jobs. SSR, Playwright scrape."
+    enabled: true
 
   # -- AI Labs & LLM providers --
 
